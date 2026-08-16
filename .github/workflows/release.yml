@@ -68,8 +68,15 @@ jobs:
         shell: bash
         run: |
           VERSION=$(grep -m1 -E '^\s+VERSION [0-9]' CMakeLists.txt | tr -dc '0-9.')
-          NAME=$(grep -m1 'set(DSDR_VERSION_NAME' CMakeLists.txt \
-                 | sed -E 's/.*"([^"]+)".*/\1/')
+          NAME=$(sed -n 's/^[[:space:]]*set(DSDR_VERSION_NAME[[:space:]]*"\([^"]*\)".*/\1/p' CMakeLists.txt | head -1)
+          # Un nome vuoto o lungo come una frase vuol dire che l'estrazione ha
+          # preso la cosa sbagliata. Fermarsi qui costa un minuto; accorgersene
+          # dalla pagina della release costa quaranta minuti di build.
+          if [ -z "$NAME" ] || [ ${#NAME} -gt 24 ]; then
+            echo "::error::nome della versione non plausibile: «$NAME»"
+            exit 1
+          fi
+
           echo "DSDR_VERSION=$VERSION" >> "$GITHUB_ENV"
           echo "DSDR_NAME=$NAME" >> "$GITHUB_ENV"
           # Lo spazio sparisce dal nome del file e resta nel titolo: un nome
@@ -579,7 +586,7 @@ jobs:
       - name: Versione e nome
         shell: bash
         run: |
-          NAME=$(sed -n 's/.*set(DSDR_VERSION_NAME "\([^"]*\)".*/\1/p' CMakeLists.txt | head -1)
+          NAME=$(sed -n 's/^[[:space:]]*set(DSDR_VERSION_NAME[[:space:]]*"\([^"]*\)".*/\1/p' CMakeLists.txt | head -1)
           echo "DSDR_NAME=$NAME" >> "$GITHUB_ENV"
 
       - name: Crea la bozza

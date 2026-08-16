@@ -30,7 +30,7 @@ project(decodium-sdr
 # Fessenden, Armstrong… La lettera è il numero d'ordine, e non si salta.
 # È metadato di release, non una preferenza di chi compila: lasciarlo in cache
 # farebbe sopravvivere il nome della versione precedente a un aggiornamento.
-set(DSDR_VERSION_NAME "Goldsmith" CACHE STRING "Il nome di questa versione")
+set(DSDR_VERSION_NAME "Goldsmith")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
