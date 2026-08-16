@@ -13,7 +13,7 @@
 ;
 ;   cmake --install build --prefix staging
 ;   ISCC /DStagingDir=<percorso assoluto> /DAppVersion=1.2.5 ^
-;        /DAppVersionName="Armstrong" decodium-sdr.iss
+;        /DAppVersionName=Goldsmith decodium-sdr.iss
 
 #ifndef StagingDir
   #error Manca StagingDir: indicare la cartella prodotta da cmake --install
@@ -61,7 +61,7 @@ OutputDir=.
 ; installatore scaricato finisce in una cartella insieme ad altri dieci, e fra
 ; sei mesi «DECODIUM_SDR_1.2.1_x64_Setup.exe» non dice a nessuno che cosa
 ; contiene. «Braun» si'.
-; Lo spazio sparisce dal nome del file e resta nel titolo. «Armstrong» e' come
+; Lo spazio sparisce dal nome del file e resta nel titolo. «De Forest» e' come
 ; si chiamava; «DECODIUM_SDR_1.2.5_Armstrong_x64_Setup.exe» e' un nome di file
 ; che si spezza in due alla prima riga di comando che lo tocca.
 #if AppVersionName != ""

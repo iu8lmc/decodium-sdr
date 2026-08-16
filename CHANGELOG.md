@@ -4,6 +4,60 @@ Il formato segue [Keep a Changelog](https://keepachangelog.com/it/1.1.0/).
 
 ## [Non rilasciato]
 
+## [1.2.5] «Goldsmith» — 2026-08-16
+
+La release più grande da quando esiste lo schema dei nomi: **diecimila righe su
+centoventisette file**. Tre direzioni — la radio tradizionale che diventa una
+sorgente completa, la rete, e il confezionamento su tutte e tre le
+piattaforme.
+
+### Aggiunto
+
+- **Backend RTL-SDR con CAT.** Una chiavetta e una radio governata dal CAT
+  diventano un apparato solo: lo spettro largo arriva dalla chiavetta, la
+  frequenza dalla radio, e il panadapter segue il VFO.
+
+- **Rete SDR++.** Un client per il protocollo del server di SDR++, accanto a
+  rtl_tcp e SpyServer, più un client IQ generico per i formati che non hanno
+  un protocollo di controllo proprio.
+
+- **Uscita audio in rete.** L'audio demodulato si manda a un altro programma o
+  a un'altra macchina, invece di passare per cavi audio virtuali.
+
+- **Dialogo operazioni e pianificatore.** Le cose che si vogliono far succedere
+  a un'ora stabilita hanno un posto dove essere scritte.
+
+- **Gestore dei moduli IQ**, con il catalogo di quelli caricati.
+
+- **`rigctld` locale**, avviato dal programma: chi ha hamlib installato non
+  deve più tenere un terminale aperto accanto.
+
+### Corretto
+
+- **Confezionamento, su tutte e tre le piattaforme.** Hamlib su Windows e su
+  Linux, il runtime AppImage per ARM, la firma del runtime macOS riscritto, il
+  confronto degli UUID Mach-O universali, e il plugin multimediale inutilizzato
+  che non entra più nelle AppImage.
+
+- **Barriera di avvio del DSP su ARM**, e la cadenza dei frame in CI.
+
+### Cambiato
+
+- **Il nome della versione.** Era uscita chiamandosi di nuovo «Armstrong», che
+  è già la 1.2.0. Due versioni con lo stesso nome tolgono al nome l'unica cosa
+  che sa fare — dire quale viene prima — e avrebbero prodotto pacchetti con lo
+  stesso nome e dentro cose diverse. Dopo Fessenden tocca alla G: **Alfred N.
+  Goldsmith**, cofondatore dell'IRE — poi IEEE — e progettista dei primi
+  ricevitori a supereterodina prodotti in serie.
+
+  La regola ora è scritta dove si sceglie: un nome si usa una volta sola.
+  Saltarne uno non fa danno, riusarlo sì.
+
+### Verificato
+
+- 48 test, sette più della 1.2.4. `-Werror` pulito.
+
+
 ## [1.2.4] «Fessenden» — 2026-08-15
 
 Una release per rendere la radio tradizionale una sorgente che resta
